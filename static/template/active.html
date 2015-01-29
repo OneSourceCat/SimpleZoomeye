@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+<html>
+<body>
+	{% block page-content %}
+	<div class="intro" align="center">
+		<a class="logo-sm" title="FuckingFly Team" href="../static/images/logo.png"></a>
+		<br>
+	</div>
+	<div class="form_on" align="center">
+	<form id="search_form" class="wmap" method="get" action="/search/">
+	<input class="text" type="text" name="q" data-items="4" data-provide="typeahead" autocomplete="off">
+	<input id="search_btn" class="btn btn-info" type="submit" value="Search">
+	<br>
+	</form>
+	</div>
+	{% endblock %}
+</body>
+</html>

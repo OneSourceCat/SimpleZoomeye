@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>VHost Hunter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">VHost Hunter</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="/index/">主页</a></li>
+              <li><a href="/search/">搜索</a></li>
+              <li><a href="#">文档</a></li>
+              <li><a href="#">关于</a></li>
+            </ul>
+<!-- new nav -->
+
+          <ul class="nav pull-right">
+                <li>
+                  <a href="">
+                  {% if user.is_authenticated %}
+                    Welcome:<b>{{user.username}}</b>
+                  {% endif %}
+                  </a>
+                </li>
+                <li class="divider-vertical">
+                </li>
+                <li class="dropdown">
+                   <a data-toggle="dropdown" class="dropdown-toggle" href="#">选项<strong class="caret"></strong></a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="/logout/">退出登录</a>
+                    </li>
+                    <li>
+                      <a href="/admin/">管理中心</a>
+                    </li>
+                    <li>
+                      <a href="/attack/">攻击模块</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+<!-- new done -->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main hero unit for a primary marketing message or call to action -->
+<div class="search">
+    {% block page-content %}
+    <!-- <div class="container"> -->
+    <div class="hero-unit">
+		<div class="pull-right">
+    <font color="green">{{register_success_info}}</font>
+		  <form class="well" action="/login/" method="POST">
+		   <label>Username</label>
+		   <input type="text" class="span3" name="username" placeholder="Type your username">
+		   <label>Password</label>
+		   <input type="password" class="span3" name="password" placeholder="Type your password"><br/>
+       <font color="red">{{login_err}}</font>
+		   <button type="submit" class="btn btn-primary btn-large">登录</button>
+		  </form>
+		</div>
+        <h1>We are FuckingFly！</h1>
+        <p>本Web应用来自于FuckingFly Team。<br/>
+        授权后，我们为您提供网络空间搜索，甚至是高权限的攻击模块应用。</p>
+        <p><a class="btn btn-primary btn-large" onclick="register()">立即注册</a></p>
+        <script type="text/javascript">
+            function register(){
+              window.location.href = "/register/"
+            }
+        </script>
+      </div>
+      
+    </div> <!-- /container -->
+    {% endblock %}
+
+</div>  <!-- search end -->
+<div class="divider"></div>
+
+<!-- 页脚信息 -->
+<div id="footer">
+    <div class="footer-con">
+        <ul class="copyright">
+        <li>
+        ©2014 
+        <a target="_blank" href="http://blog.csdn.net/u011721501?viewmode=list">FuckingFly Team</a>
+        . All Rights Reserved.
+        </li>
+        <li>
+        Contact:
+        <a href="mailto:chongrui123@gmail.com">chongrui123@gmail.com</a>
+        </li>
+    </ul>
+    </div>
+</div> <!--footer end-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+  </body>
+</html>

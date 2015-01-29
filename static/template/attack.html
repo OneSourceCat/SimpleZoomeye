@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+<html>
+<body>
+{% block page-content %}
+{% ifequal info 'Non-permission' %}
+	<h1><font color='write'>{{info}}</font></h1>
+{% else %}
+		<div class="span12">
+			<h2>
+			      <font color="#E0E0E0">命令行参数列表</font>
+			</h2>
+			<p>
+				<font color="#E0E0E0">这里后期加入命令行的简单说明</font>
+			</p>
+			<p>
+				<a class="btn" href="#">查看更多 »</a>
+			</p>
+			<form id="search_form" class="wmap" method="POST" action="/attack/">
+				<input class="text" type="text" name="cmd" autocomplete="off" data-provide="typeahead">
+				<input id="search_btn" class="btn btn-info" type="submit" value="执行">
+			</form>
+			<br/><br/>
+			{% if download_path %}
+				<a href="{{download_path}}">下载报告</a>
+			{% endif %}
+			<br/><br/>
+		<font color="#E0E0E0">
+			{% for x in results %}
+				{{x}}<br/>
+			{% endfor %}
+		</font>
+		</div>
+
+
+{% endifequal %}
+{% endblock %}
+</body>
+</html>
+

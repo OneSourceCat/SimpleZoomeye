@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+<html>
+<body>
+
+{% block page-content %}
+<div class="hero-unit">
+<div align="pull-left">
+<form class="well" action="/register/" method="POST">
+	Username<br/>
+	<input type="text" class="span3" name="username" placeholder="Type your username"><br/>
+	{% if err_user_exists %}
+	<font color="red">{{err_user_exists}}</font><br/>
+	{% endif %}
+	Password<br/>
+	<input type="password" class="span3" name="password" placeholder="Type your password"><br/>
+	{% if err_pass_not_equal %}
+	<font color="red">{{err_pass_not_equal}}</font><br/>
+	{% endif %}
+	Repeat Password<br/>
+	<input type="password" class="span3" name="repassword" placeholder="Repeat your password"><br/>
+	E-mail<br/>
+	<input type="text" class="span3" name="email" placeholder="Type your e-mail"><br/>
+	{% if err_email_invalid %}
+	<font color="red">{{err_email_invalid}}</font><br/>
+	{% endif %}
+	<button type="submit" class="btn btn-primary btn-large">注册</button>
+</form>
+</div>
+</div>
+{% endblock %}
+</body>
+</html>

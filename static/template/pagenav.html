@@ -1,0 +1,36 @@
+<div class="pagination">
+	<ul>
+		{% ifequal info_list|length 0 %}
+			<div height="100px">
+			 	<font color="#888888" size="29px">Sorry, no result found.</font><br/><br/><br/>
+			 	<font color="#ffffff" size="17px">
+				The query you entered does not match any result. <br/>Please check your command, or try other queries.<br/>
+				<br/>
+				If you're new to VHost Hunter, here are some instructions you can follow.<br/>
+				<br/>
+				User Manual | About
+				<br/>
+			 </font>
+				
+			</div>
+		{% else %}
+			{% if page.has_previous %}
+			<li>
+				<a href="/search/?q={{query}}&pageid={{page.previous_page_number}}">上一页</a>
+			</li>
+			{% endif %}
+			{% for pn in prange %}
+			<li>
+				<a href="/search/?q={{query}}&pageid={{pn}}">{{pn}}</a>
+			</li>
+			{% endfor %}
+
+			{% if page.has_next %}
+			<li>
+				<a href="/search/?q={{query}}&pageid={{page.next_page_number}}">下一页</a>
+			</li>
+			{% endif %}
+
+		{% endifequal %}
+	</ul>
+</div>

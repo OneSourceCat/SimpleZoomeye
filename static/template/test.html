@@ -1,0 +1,96 @@
+{% extends "index.html" %}
+<html>
+<body>
+{% block page-content %}
+
+<link href="/static/css/bootstrap2.css" rel="stylesheet">
+<div id="subsearch" align="">
+<a title="FuckingFly Team" href="/index/"><img src="../static/images/logo.png" /></a>
+<form id="search_form" class="wmap" method="get" action="/search/">
+<input class="text" type="text" name="q" autocomplete="off" data-provide="typeahead">
+<input id="search_btn" class="btn btn-info" type="submit" value="Search">
+</form>
+</div>
+
+<!-- 搜索项显示 -->
+<div class="search-item">
+<div class="divider"></div>
+<!--搜索条数统计-->
+<div id="search-tip">
+<span> About {{info_list|length}} results({{cost}} sec)</span>
+<span style="color:#eee;">
+Required more information?
+<a href="#">Commit to us.</a>
+</span>
+</div>  <!--search-tip end-->
+
+<div class="divider"></div>
+<div class="ul-list">
+<ul>
+{% for host in page %}
+<li class="item-li">
+<div class="item">
+	<h4>
+	<a href="{{host.domain}}">{{host.domain}}</a>
+	</h4>
+
+	<div class="row">
+		<div class="span5">
+			<div>
+				<span>IP</span>
+				: {{host.ip}}
+			</div>
+
+			<div>
+				<span>country</span>
+				: {{host.country}}
+			</div>
+			
+			<div>
+				<span>city</span>
+				: {{host.city}}
+			</div>
+
+			<div>
+				<span>server-info</span>
+				: {{host.serverinfo}}
+			</div>
+
+			<div>
+				<span>server-flag</span>
+				: {{host.flag}}
+			</div>
+
+			<div>
+				<span>version-info</span>
+				: {{host.version}}
+			</div>
+
+			<div class="add-time">
+				<span>Update time</span>
+				: {{host.date}}
+			</div>
+		</div>
+
+		<div class="span7">
+			<pre>{{host.http_response}}</pre>
+		</div>
+	</div>
+</div>
+</li>
+{% endfor %}
+</ul>
+</div><!--ul-list end-->
+
+<div align="center">
+{% include "pagenav.html" %}
+</div>
+
+</div> <!-- search-item end -->
+
+
+
+{% endblock %}	
+</body>
+</html>
+
